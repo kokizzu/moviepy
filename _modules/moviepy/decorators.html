@@ -385,23 +385,23 @@ document.write(`
 <span class="kn">from</span> <span class="nn">moviepy.tools</span> <span class="kn">import</span> <span class="n">convert_to_seconds</span>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="outplace"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.outplace.html#moviepy.decorators.outplace">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">outplace</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies ``func(clip.copy(), *args, **kwargs)`` and returns ``clip.copy()``.&quot;&quot;&quot;</span>
     <span class="n">new_clip</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">func</span><span class="p">(</span><span class="n">new_clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">new_clip</span>
+    <span class="k">return</span> <span class="n">new_clip</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="convert_masks_to_RGB"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.convert_masks_to_RGB.html#moviepy.decorators.convert_masks_to_RGB">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">convert_masks_to_RGB</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;If the clip is a mask, convert it to RGB before running the function.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">clip</span><span class="o">.</span><span class="n">is_mask</span><span class="p">:</span>
         <span class="n">clip</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">to_RGB</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="apply_to_mask"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.apply_to_mask.html#moviepy.decorators.apply_to_mask">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">apply_to_mask</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies the same function ``func`` to the mask of the clip created with</span>
 <span class="sd">    ``func``.</span>
@@ -409,37 +409,37 @@ document.write(`
     <span class="n">new_clip</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">new_clip</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">new_clip</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">new_clip</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">new_clip</span>
+    <span class="k">return</span> <span class="n">new_clip</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="apply_to_audio"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.apply_to_audio.html#moviepy.decorators.apply_to_audio">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">apply_to_audio</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies the function ``func`` to the audio of the clip created with ``func``.&quot;&quot;&quot;</span>
     <span class="n">new_clip</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">new_clip</span><span class="p">,</span> <span class="s2">&quot;audio&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">new_clip</span><span class="o">.</span><span class="n">audio</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">new_clip</span><span class="o">.</span><span class="n">audio</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">new_clip</span>
+    <span class="k">return</span> <span class="n">new_clip</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="requires_duration"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.requires_duration.html#moviepy.decorators.requires_duration">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">requires_duration</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raises an error if the clip has no duration.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">clip</span><span class="o">.</span><span class="n">duration</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Attribute &#39;duration&#39; not set&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="requires_fps"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.requires_fps.html#moviepy.decorators.requires_fps">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">requires_fps</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raises an error if the clip has no fps.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="s2">&quot;fps&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">clip</span><span class="o">.</span><span class="n">fps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Attribute &#39;fps&#39; not set&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="audio_video_effect"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.audio_video_effect.html#moviepy.decorators.audio_video_effect">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">audio_video_effect</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">effect</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Use an audio function on a video/audio clip.</span>
 
@@ -452,7 +452,7 @@ document.write(`
             <span class="n">clip</span><span class="o">.</span><span class="n">audio</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">clip</span><span class="o">.</span><span class="n">audio</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">clip</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="preprocess_args"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.preprocess_args.html#moviepy.decorators.preprocess_args">[docs]</a><span class="k">def</span> <span class="nf">preprocess_args</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">varnames</span><span class="p">):</span>
@@ -483,15 +483,15 @@ document.write(`
     <span class="k">return</span> <span class="n">preprocess_args</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">,</span> <span class="n">varnames</span><span class="p">)</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="add_mask_if_none"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.add_mask_if_none.html#moviepy.decorators.add_mask_if_none">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">add_mask_if_none</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a mask to the clip if there is none.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">clip</span><span class="o">.</span><span class="n">mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">clip</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">with_add_mask</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
+<div class="viewcode-block" id="use_clip_fps_by_default"><a class="viewcode-back" href="../../reference/reference/moviepy.decorators.use_clip_fps_by_default.html#moviepy.decorators.use_clip_fps_by_default">[docs]</a><span class="nd">@decorator</span><span class="o">.</span><span class="n">decorator</span>
 <span class="k">def</span> <span class="nf">use_clip_fps_by_default</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Will use ``clip.fps`` if no ``fps=...`` is provided in **kwargs**.&quot;&quot;&quot;</span>
 
@@ -517,7 +517,7 @@ document.write(`
         <span class="k">for</span> <span class="p">(</span><span class="n">kwarg</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">new_kwargs</span><span class="p">)</span></div>
 </pre></div>
 
                 </article>

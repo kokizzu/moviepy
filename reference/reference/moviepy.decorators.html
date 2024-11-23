@@ -44,7 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/reference/moviepy.decorators';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="moviepy.decorators.convert_parameter_to_seconds" href="moviepy.decorators.convert_parameter_to_seconds.html" />
+    <link rel="next" title="moviepy.decorators.add_mask_if_none" href="moviepy.decorators.add_mask_if_none.html" />
     <link rel="prev" title="moviepy.config.try_cmd" href="moviepy.config.try_cmd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -377,9 +377,18 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">moviepy.decorators</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.add_mask_if_none.html">moviepy.decorators.add_mask_if_none</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.apply_to_audio.html">moviepy.decorators.apply_to_audio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.apply_to_mask.html">moviepy.decorators.apply_to_mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.audio_video_effect.html">moviepy.decorators.audio_video_effect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.convert_masks_to_RGB.html">moviepy.decorators.convert_masks_to_RGB</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.convert_parameter_to_seconds.html">moviepy.decorators.convert_parameter_to_seconds</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.convert_path_to_string.html">moviepy.decorators.convert_path_to_string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.outplace.html">moviepy.decorators.outplace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.preprocess_args.html">moviepy.decorators.preprocess_args</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.requires_duration.html">moviepy.decorators.requires_duration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.requires_fps.html">moviepy.decorators.requires_fps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.use_clip_fps_by_default.html">moviepy.decorators.use_clip_fps_by_default</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="moviepy.tools.html">moviepy.tools</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -533,14 +542,41 @@ document.write(`
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="moviepy.decorators.convert_parameter_to_seconds.html#moviepy.decorators.convert_parameter_to_seconds" title="moviepy.decorators.convert_parameter_to_seconds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_parameter_to_seconds</span></code></a>(varnames)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="moviepy.decorators.add_mask_if_none.html#moviepy.decorators.add_mask_if_none" title="moviepy.decorators.add_mask_if_none"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_mask_if_none</span></code></a>(func, clip, *args, **kwargs)</p></td>
+<td><p>Add a mask to the clip if there is none.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="moviepy.decorators.apply_to_audio.html#moviepy.decorators.apply_to_audio" title="moviepy.decorators.apply_to_audio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_to_audio</span></code></a>(func, clip, *args, **kwargs)</p></td>
+<td><p>Applies the function <code class="docutils literal notranslate"><span class="pre">func</span></code> to the audio of the clip created with <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="moviepy.decorators.apply_to_mask.html#moviepy.decorators.apply_to_mask" title="moviepy.decorators.apply_to_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_to_mask</span></code></a>(func, clip, *args, **kwargs)</p></td>
+<td><p>Applies the same function <code class="docutils literal notranslate"><span class="pre">func</span></code> to the mask of the clip created with <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="moviepy.decorators.audio_video_effect.html#moviepy.decorators.audio_video_effect" title="moviepy.decorators.audio_video_effect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">audio_video_effect</span></code></a>(func, effect, clip, ...)</p></td>
+<td><p>Use an audio function on a video/audio clip.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="moviepy.decorators.convert_masks_to_RGB.html#moviepy.decorators.convert_masks_to_RGB" title="moviepy.decorators.convert_masks_to_RGB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_masks_to_RGB</span></code></a>(func, clip, *args, **kwargs)</p></td>
+<td><p>If the clip is a mask, convert it to RGB before running the function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="moviepy.decorators.convert_parameter_to_seconds.html#moviepy.decorators.convert_parameter_to_seconds" title="moviepy.decorators.convert_parameter_to_seconds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_parameter_to_seconds</span></code></a>(varnames)</p></td>
 <td><p>Converts the specified variables to seconds.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="moviepy.decorators.convert_path_to_string.html#moviepy.decorators.convert_path_to_string" title="moviepy.decorators.convert_path_to_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_path_to_string</span></code></a>(varnames)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="moviepy.decorators.convert_path_to_string.html#moviepy.decorators.convert_path_to_string" title="moviepy.decorators.convert_path_to_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_path_to_string</span></code></a>(varnames)</p></td>
 <td><p>Converts the specified variables to a path string.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="moviepy.decorators.outplace.html#moviepy.decorators.outplace" title="moviepy.decorators.outplace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">outplace</span></code></a>(func, clip, *args, **kwargs)</p></td>
+<td><p>Applies <code class="docutils literal notranslate"><span class="pre">func(clip.copy(),</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> and returns <code class="docutils literal notranslate"><span class="pre">clip.copy()</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="moviepy.decorators.preprocess_args.html#moviepy.decorators.preprocess_args" title="moviepy.decorators.preprocess_args"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess_args</span></code></a>(fun, varnames)</p></td>
 <td><p>Applies fun to variables in varnames before launching the function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="moviepy.decorators.requires_duration.html#moviepy.decorators.requires_duration" title="moviepy.decorators.requires_duration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requires_duration</span></code></a>(func, clip, *args, **kwargs)</p></td>
+<td><p>Raises an error if the clip has no duration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="moviepy.decorators.requires_fps.html#moviepy.decorators.requires_fps" title="moviepy.decorators.requires_fps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">requires_fps</span></code></a>(func, clip, *args, **kwargs)</p></td>
+<td><p>Raises an error if the clip has no fps.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="moviepy.decorators.use_clip_fps_by_default.html#moviepy.decorators.use_clip_fps_by_default" title="moviepy.decorators.use_clip_fps_by_default"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_clip_fps_by_default</span></code></a>(func, clip, *args, ...)</p></td>
+<td><p>Will use <code class="docutils literal notranslate"><span class="pre">clip.fps</span></code> if no <code class="docutils literal notranslate"><span class="pre">fps=...</span></code> is provided in <strong>kwargs</strong>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -564,11 +600,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="moviepy.decorators.convert_parameter_to_seconds.html"
+       href="moviepy.decorators.add_mask_if_none.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">moviepy.decorators.convert_parameter_to_seconds</p>
+        <p class="prev-next-title">moviepy.decorators.add_mask_if_none</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
